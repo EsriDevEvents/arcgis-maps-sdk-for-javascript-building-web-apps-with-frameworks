@@ -1,0 +1,27 @@
+.simple-coordinate-conversion {
+	position: absolute;
+	bottom: 31px;
+	right: 15px;
+	padding: 10px;
+	gap: 10px;
+	background-color: var(--calcite-color-background);
+	min-width: 400px;
+	display: flex;
+	flex-direction: row;
+	font-size: 10px;
+    z-index: 10;
+}
+
+.simple-coordinate-editable {
+	width: 325px;
+}
+
+.simple-coordinate-editable input {
+	font-size: 10px;
+	line-height: 15.6px;
+	font-family: Avenir Next, Helvetica Neue, helvetica, arial, sans-serif;
+}
+
+.simple-coordinate-conversion-select {
+	text-align-last: center;
+}
