@@ -103,7 +103,7 @@ function App() {
       <CalcitePanel
         heading="default / unnamed"
         description="Slot name"
-        //mode="calcite-mode-dark"
+        class="calcite-mode-dark"
       >
         <CalciteNotice width="full" open>
           <div slot="title">Default content</div>
