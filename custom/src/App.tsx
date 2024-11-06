@@ -16,7 +16,6 @@ import { useState } from "react";
 import "./App.css";
 import SimpleCoordinateConversion from "./components/SimpleCoordinateConversion";
 import useCoordinateConversionViewModel from "./components/useCoordinateConversionViewModel";
-import useTime from "./components/useTime";
 
 // Load all map assets
 defineMapElements(window, {
@@ -41,8 +40,6 @@ function App() {
   const { coordinateConversionViewModel } =
     useCoordinateConversionViewModel(mapView);
 
-  const time = useTime();
-
   // COMPOSITION OF COMPONENTS
   return (
     <CalciteShell>
@@ -53,7 +50,6 @@ function App() {
           heading="Custom hooks and using Calcite components"
           description="Esri European Developer Summit 2024"
         ></CalciteNavigationLogo>
-        <p slot="content-end">{time.toLocaleTimeString()}</p>
       </CalciteNavigation>
       <ArcgisMap
         itemId="05e015c5f0314db9a487a9b46cb37eca"

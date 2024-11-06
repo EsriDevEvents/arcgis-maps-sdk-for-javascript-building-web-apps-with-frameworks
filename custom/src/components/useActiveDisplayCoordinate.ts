@@ -6,10 +6,12 @@ const useActiveDisplayCoordinate = (vm: CoordinateConversionViewModel) => {
   const [activeDisplayCoordinate, setActiveDisplayCoordinate] = useState("");
 
   useEffect(() => {
+    // Watch for changes on the coordinates of the first conversion
     const handle = watch(
       () => vm?.conversions?.getItemAt(0)?.displayCoordinate,
-      (displayCoordinate) =>
-        setActiveDisplayCoordinate(displayCoordinate ?? ""),
+      (displayCoordinate) => {
+        setActiveDisplayCoordinate(displayCoordinate ?? "");
+      },
       { initial: true }
     );
 

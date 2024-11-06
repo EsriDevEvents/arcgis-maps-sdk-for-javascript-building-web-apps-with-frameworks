@@ -1,13 +1,6 @@
 import CoordinateConversionViewModel from "@arcgis/core/widgets/CoordinateConversion/CoordinateConversionViewModel";
 import Conversion from "@arcgis/core/widgets/CoordinateConversion/support/Conversion.js";
-import {
-  CalciteButton,
-  CalciteInlineEditable,
-  CalciteInput,
-  CalciteOption,
-  CalciteSelect,
-  CalciteTooltip,
-} from "@esri/calcite-components-react";
+import { CalciteButton, CalciteInlineEditable, CalciteInput, CalciteOption, CalciteSelect, CalciteTooltip } from "@esri/calcite-components-react";
 import { useEffect, useState } from "react";
 import useActiveFormat from "./useActiveFormat";
 import useActiveDisplayCoordinate from "./useActiveDisplayCoordinate";
@@ -20,9 +13,7 @@ interface SimpleCoordinateConversionProps {
 /**
  * Custom component to display map lat/lon coordinates
  */
-export default function SimpleCoordinateConversion(
-  props: SimpleCoordinateConversionProps
-) {
+export default function SimpleCoordinateConversion(props: SimpleCoordinateConversionProps) {
   const [mode, setMode] = useState("live");
 
   const { vm } = props;
@@ -42,6 +33,7 @@ export default function SimpleCoordinateConversion(
       }
     } catch (e) {
       // Swallow errors
+      console.debug(e);
     }
   }
 
@@ -58,9 +50,7 @@ export default function SimpleCoordinateConversion(
         }}
       />
       <CalciteTooltip referenceElement="simple-coordinate-change-mode">
-        {mode === "live"
-          ? "Show live position on mouse move"
-          : "Capture position on mouse click"}
+        {mode === "live" ? "Show live position on mouse move" : "Capture position on mouse click"}
       </CalciteTooltip>
       <CalciteSelect
         class="simple-coordinate-conversion-select"
@@ -75,19 +65,13 @@ export default function SimpleCoordinateConversion(
       >
         {vm.formats.map((format) => {
           return (
-            <CalciteOption
-              key={format.name}
-              value={format.name}
-              selected={format.name === activeFormat?.name ? true : undefined}
-            >
+            <CalciteOption key={format.name} value={format.name} selected={format.name === activeFormat?.name ? true : undefined}>
               {format.name.toLocaleUpperCase()}
             </CalciteOption>
           );
         })}
       </CalciteSelect>
-      <CalciteTooltip referenceElement="simple-coordinate-select">
-        {activeFormat?.label}
-      </CalciteTooltip>
+      <CalciteTooltip referenceElement="simple-coordinate-select">{activeFormat?.label}</CalciteTooltip>
       <CalciteInlineEditable
         id="simple-coordinate-editable"
         className="simple-coordinate-editable"
@@ -98,22 +82,14 @@ export default function SimpleCoordinateConversion(
           }
         }}
         onCalciteInlineEditableEditConfirm={(e) => {
-          reverseConvert(
-            (e.target as unknown as HTMLCalciteInputElement).value
-          );
+          reverseConvert((e.target as unknown as HTMLCalciteInputElement).value);
         }}
       >
-        <CalciteInput
-          id="simple-coordinate-input"
-          placeholder="Click on map"
-          value={activeDisplayCoordinate}
-        >
+        <CalciteInput id="simple-coordinate-input" placeholder="Click on map" value={activeDisplayCoordinate}>
           {activeDisplayCoordinate}
         </CalciteInput>
       </CalciteInlineEditable>
-      <CalciteTooltip referenceElement="simple-coordinate-editable">
-        Enter coordinate
-      </CalciteTooltip>
+      <CalciteTooltip referenceElement="simple-coordinate-editable">Enter coordinate</CalciteTooltip>
     </div>
   );
 }

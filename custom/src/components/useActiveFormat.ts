@@ -7,12 +7,14 @@ const useActiveFormat = (vm: CoordinateConversionViewModel) => {
   const [activeFormat, setActiveFormat] = useState<Format>();
 
   useEffect(() => {
+    // Watch for changes on the format of the first conversion
     const handle = watch(
       () => vm?.conversions?.getItemAt(0)?.format,
       (format) => setActiveFormat(format),
       { initial: true }
     );
 
+    // Cleanup
     return function cleanUp() {
       handle?.remove();
     };
