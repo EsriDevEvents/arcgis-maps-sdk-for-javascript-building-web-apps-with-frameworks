@@ -1,4 +1,3 @@
-import { defineCustomElements as defineMapElements } from "@arcgis/map-components/dist/loader";
 import {
   CalciteAction,
   CalciteActionBar,
@@ -12,11 +11,6 @@ import {
 import { defineCustomElements as defineCalciteElements } from "@esri/calcite-components/dist/loader";
 import "./App.css";
 
-// Load all map assets
-defineMapElements(window, {
-  resourcesUrl: "https://js.arcgis.com/map-components/4.30/assets",
-});
-
 // Load all Calcite assets
 defineCalciteElements(window, {
   resourcesUrl: "https://js.arcgis.com/calcite-components/2.13.2/assets",
@@ -25,6 +19,8 @@ defineCalciteElements(window, {
 function App() {
   return (
     <CalciteShell>
+
+      {/* Navigation in header slot */}
       <CalciteNavigation slot="header" navigation-action id="nav">
         <CalciteNavigationLogo
           icon="clustering"
@@ -33,11 +29,14 @@ function App() {
           description="Esri European Developer Summit 2024"
         ></CalciteNavigationLogo>
       </CalciteNavigation>
+
+      {/* Panel in panel-start slot */}
       <CalciteShellPanel
         slot="panel-start"
         position="start"
         id="shell-panel-start"
       >
+        {/* action bar in the action-bar slot of the panel */}
         <CalciteActionBar slot="action-bar">
           <CalciteAction text="Save" icon="save" indicator></CalciteAction>
           <CalciteAction active icon="map" text="Map"></CalciteAction>
@@ -54,6 +53,7 @@ function App() {
         </CalcitePanel>
       </CalciteShellPanel>
 
+      {/* This is the panel at thend in the panel-end slot, position=end indicated that the action bar moves to the other side */}
       <CalciteShellPanel slot="panel-end" position="end" id="shell-panel-end">
         <CalciteActionBar slot="action-bar">
           <CalciteAction text="Save" icon="save" indicator></CalciteAction>
@@ -71,9 +71,9 @@ function App() {
         </CalcitePanel>
       </CalciteShellPanel>
 
+      {/* Another panel in the panel-top slot, horizontal layout */}
       <CalciteShellPanel
         slot="panel-top"
-        position="end"
         id="shell-panel-top"
         layout="horizontal"
       >
@@ -84,6 +84,7 @@ function App() {
         </CalcitePanel>
       </CalciteShellPanel>
 
+      {/* This is the bottom panel */}
       <CalciteShellPanel
         slot="panel-bottom"
         position="start"
@@ -100,6 +101,8 @@ function App() {
           </CalciteNotice>
         </CalcitePanel>
       </CalciteShellPanel>
+
+      {/* And the default panel, often used for the map */}
       <CalcitePanel
         heading="default / unnamed"
         description="Slot name"
