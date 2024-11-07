@@ -22,7 +22,7 @@ export default function SimpleCoordinateConversion(props: SimpleCoordinateConver
     mode === "live" ? (vm.mode = "live") : (vm.mode = "capture");
   }, [mode, vm]);
 
-  const { activeFormat } = useActiveFormat(vm);
+  const activeFormat = useActiveFormat(vm);
   const { activeDisplayCoordinate } = useActiveDisplayCoordinate(vm);
 
   async function reverseConvert(value: string) {
