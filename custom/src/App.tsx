@@ -1,15 +1,6 @@
 import { defineCustomElements as defineMapElements } from "@arcgis/map-components/dist/loader";
-import {
-  ArcgisHome,
-  ArcgisMap,
-  ArcgisZoom,
-  ArcgisCoordinateConversion,
-} from "@arcgis/map-components-react";
-import {
-  CalciteNavigation,
-  CalciteNavigationLogo,
-  CalciteShell,
-} from "@esri/calcite-components-react";
+import { ArcgisHome, ArcgisMap, ArcgisZoom, ArcgisCoordinateConversion } from "@arcgis/map-components-react";
+import { CalciteNavigation, CalciteNavigationLogo, CalciteShell } from "@esri/calcite-components-react";
 import { defineCustomElements as defineCalciteElements } from "@esri/calcite-components/dist/loader";
 import type MapView from "@arcgis/core/views/MapView";
 import { useState } from "react";
@@ -37,8 +28,7 @@ function App() {
     setMapView(mapEl.view);
   };
 
-  const { coordinateConversionViewModel } =
-    useCoordinateConversionViewModel(mapView);
+  const coordinateConversionViewModel = useCoordinateConversionViewModel(mapView);
 
   // COMPOSITION OF COMPONENTS
   return (
@@ -51,20 +41,12 @@ function App() {
           description="Esri European Developer Summit 2024"
         ></CalciteNavigationLogo>
       </CalciteNavigation>
-      <ArcgisMap
-        itemId="05e015c5f0314db9a487a9b46cb37eca"
-        popupDisabled
-        onArcgisViewReadyChange={handleViewReady}
-      >
+      <ArcgisMap itemId="05e015c5f0314db9a487a9b46cb37eca" popupDisabled onArcgisViewReadyChange={handleViewReady}>
         {/* INCLUDE HOME, ZOOM AND COORDINATECONVERSION COMPONENTS */}
         <ArcgisHome position="top-left"></ArcgisHome>
         <ArcgisZoom position="top-left"></ArcgisZoom>
         <ArcgisCoordinateConversion position="bottom-left"></ArcgisCoordinateConversion>
-        {coordinateConversionViewModel && (
-          <SimpleCoordinateConversion
-            vm={coordinateConversionViewModel}
-          ></SimpleCoordinateConversion>
-        )}
+        {coordinateConversionViewModel && <SimpleCoordinateConversion vm={coordinateConversionViewModel}></SimpleCoordinateConversion>}
       </ArcgisMap>
     </CalciteShell>
   );
