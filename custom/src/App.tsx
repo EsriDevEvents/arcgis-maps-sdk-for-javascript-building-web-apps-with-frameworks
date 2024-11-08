@@ -1,22 +1,20 @@
-import { defineCustomElements as defineMapElements } from "@arcgis/map-components/dist/loader";
+import "@arcgis/map-components/dist/components/arcgis-map";
+import "@arcgis/map-components/dist/components/arcgis-home";
+import "@arcgis/map-components/dist/components/arcgis-zoom";
+import "@arcgis/map-components/dist/components/arcgis-coordinate-conversion";
 import { ArcgisHome, ArcgisMap, ArcgisZoom, ArcgisCoordinateConversion } from "@arcgis/map-components-react";
+import "@esri/calcite-components/dist/components/calcite-navigation";
+import "@esri/calcite-components/dist/components/calcite-navigation-logo";
+import "@esri/calcite-components/dist/components/calcite-shell";
 import { CalciteNavigation, CalciteNavigationLogo, CalciteShell } from "@esri/calcite-components-react";
-import { defineCustomElements as defineCalciteElements } from "@esri/calcite-components/dist/loader";
+import { setAssetPath as setCalciteComponentsAssetPath } from "@esri/calcite-components/dist/components";
 import type MapView from "@arcgis/core/views/MapView";
 import { useState } from "react";
 import "./App.css";
 import SimpleCoordinateConversion from "./components/SimpleCoordinateConversion";
 import useCoordinateConversionViewModel from "./components/useCoordinateConversionViewModel";
 
-// Load all map assets
-defineMapElements(window, {
-  resourcesUrl: "https://js.arcgis.com/map-components/4.30/assets",
-});
-
-// Load all Calcite assets
-defineCalciteElements(window, {
-  resourcesUrl: "https://js.arcgis.com/calcite-components/2.13.2/assets",
-});
+setCalciteComponentsAssetPath("https://js.arcgis.com/calcite-components/2.13.2/assets");
 
 function App() {
   // State management

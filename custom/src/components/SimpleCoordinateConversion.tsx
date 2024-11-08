@@ -1,5 +1,11 @@
 import CoordinateConversionViewModel from "@arcgis/core/widgets/CoordinateConversion/CoordinateConversionViewModel";
 import Conversion from "@arcgis/core/widgets/CoordinateConversion/support/Conversion.js";
+import "@esri/calcite-components/dist/components/calcite-button";
+import "@esri/calcite-components/dist/components/calcite-inline-editable";
+import "@esri/calcite-components/dist/components/calcite-input";
+import "@esri/calcite-components/dist/components/calcite-option";
+import "@esri/calcite-components/dist/components/calcite-select";
+import "@esri/calcite-components/dist/components/calcite-tooltip";
 import { CalciteButton, CalciteInlineEditable, CalciteInput, CalciteOption, CalciteSelect, CalciteTooltip } from "@esri/calcite-components-react";
 import { useEffect, useState } from "react";
 import useActiveFormat from "./useActiveFormat";
