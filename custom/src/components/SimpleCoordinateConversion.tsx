@@ -55,7 +55,7 @@ export default function SimpleCoordinateConversion(props: SimpleCoordinateConver
           mode === "live" ? setMode("capture") : setMode("live");
         }}
       />
-      <CalciteTooltip referenceElement="simple-coordinate-change-mode">
+      <CalciteTooltip referenceElement="simple-coordinate-change-mode" placement="top-start">
         {mode === "live" ? "Show live position on mouse move" : "Capture position on mouse click"}
       </CalciteTooltip>
       <CalciteSelect
@@ -77,7 +77,9 @@ export default function SimpleCoordinateConversion(props: SimpleCoordinateConver
           );
         })}
       </CalciteSelect>
-      <CalciteTooltip referenceElement="simple-coordinate-select">{activeFormat?.label}</CalciteTooltip>
+      <CalciteTooltip referenceElement="simple-coordinate-select" placement="top">
+        {activeFormat?.label}
+      </CalciteTooltip>
       <CalciteInlineEditable
         id="simple-coordinate-editable"
         className="simple-coordinate-editable"
@@ -95,7 +97,9 @@ export default function SimpleCoordinateConversion(props: SimpleCoordinateConver
           {activeDisplayCoordinate}
         </CalciteInput>
       </CalciteInlineEditable>
-      <CalciteTooltip referenceElement="simple-coordinate-editable">Enter coordinate</CalciteTooltip>
+      <CalciteTooltip referenceElement="simple-coordinate-editable" placement="top-start">
+        Enter coordinate
+      </CalciteTooltip>
     </div>
   );
 }
