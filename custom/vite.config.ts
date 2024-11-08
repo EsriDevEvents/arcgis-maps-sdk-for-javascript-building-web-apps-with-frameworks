@@ -7,4 +7,8 @@ export default defineConfig({
   server: {
     open: true,
   },
+  build: {
+    chunkSizeWarningLimit: 2000
+  },
+  base: "/custom/dist/"
 });
